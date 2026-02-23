@@ -1,46 +1,96 @@
-# Edg-AI-Scene-Recognition-Optimization
-Benchmarking DenseNet+CBAM vs. EfficientNet+Coordinate Attention for Campus Scene Understanding.
-Edge AI Campus Scene Recognition
-Benchmarking Deep Learning Models for Scene Classification
-  
+# 🎓 Edge AI Campus Scene Recognition
+## Benchmarking Deep Learning Models for Scene Classification
 
-The Goal
-The primary objective of this project is to build a Deep Learning system capable of accurately detecting and classifying objects within a university campus environment.
+---
 
-The challenge wasn't just to identify a "Car" or a "Tree," but to distinguish between visually similar structures—specifically "Labs" vs. "Buildings"—which often confuse standard models. We wanted to see if we could achieve high accuracy not just on heavy servers, but also on lightweight architectures suitable for future mobile applications.
+## 🎯 The Goal
+The primary objective of this project is to build a **Deep Learning system** capable of accurately detecting and classifying scenes and objects within a **university campus environment**.
 
-The Data
-We created our own dataset from scratch to ensure the models were tested on real-world data, not just perfect internet images.
+The challenge wasn't just to identify obvious categories like **Car** or **Tree**, but to distinguish between visually similar structures—specifically **Labs vs. Buildings**—which often confuse standard CNN models.
 
-Source: Manually captured images around the University of Jordan.
-Classes: 5 Categories (Building, Car, Lab, Person, Tree).
+Additionally, we aimed to achieve **high accuracy on both powerful servers and lightweight edge devices**, making the system suitable for **future mobile and embedded applications**.
 
-Processing: Images were manually filtered, resized to 224x224, and augmented (Rotation, Flip, Zoom) to increase dataset diversity.
-The Engineering Breakthrough
-Our research led to a critical discovery when testing different "Attention Mechanisms" to improve the classification:
+---
 
-The Heavyweight Test (DenseNet): When we added CBAM (Convolutional Block Attention Module) to the large DenseNet model, it worked perfectly, achieving 99.15% accuracy.
-The Lightweight Test (EfficientNet): When we tried the exact same CBAM technique on the smaller EfficientNet, the performance actually dropped. It was too aggressive for the smaller network.
-The Solution: We switched to Coordinate Attention (CA) for the lightweight models. This improved the model's ability to focus on specific features without losing information, boosting accuracy to 98.03%.
+## 📂 The Data
+To ensure realism and robustness, we created our **own dataset from scratch** instead of relying on curated online datasets.
 
-📊 Performance Benchmark
-Category	Architecture	Attention Strategy	Accuracy	Verdict
-Server	DenseNet121	CBAM	99.15%	🏆 Overall Best Accuracy
-Edge	EfficientNet-B0	Coordinate Att.	98.03%	⚡ Best Efficiency
-Edge	MobileNetV2	Coordinate Att.	High	✅ Outperformed MobileNetV3
-Edge	MobileNetV3	Built-in SE	Lower	Lost to V2 + CA
-Edge	EfficientNet-B0	CBAM	95.77%	❌ Performance Drop
-Baseline	MobileNetV2	None	92.40%	Baseline (Too Low)
-Key Finding: By manually adding Coordinate Attention to the older MobileNetV2, we achieved higher accuracy than the newer, pre-optimized MobileNetV3, proving the effectiveness of our custom attention strategy.
+- **Source:** Manually captured images around the **University of Jordan**
+- **Classes:** 5 Categories  
+  - Building  
+  - Car  
+  - Lab  
+  - Person  
+  - Tree  
+- **Preprocessing:**
+  - Manual filtering
+  - Resizing to **224 × 224**
+  - Data augmentation:
+    - Rotation
+    - Horizontal Flip
+    - Zoom
 
-📂 Project Structure
-01_Server_Track_DenseNet_CBAM.ipynb: The heavy model achieving the highest overall accuracy.
-02_Edge_Track_EfficientNet_CBAM_Fail.ipynb: Our experiment showing that CBAM is not suitable for all architectures.
-03_Edge_Track_EfficientNet_CoordAtt_Success.ipynb: The optimized lightweight model using Coordinate Attention.
-04_Lightweight_Benchmarking_MobileNet.ipynb: Benchmarking MobileNet V2/V3 baselines against V2+CA.
-Research_Paper.pdf: Full documentation of methodology and mathematical breakdown.
-Project_Presentation.pdf: A visual summary of the project.
-👥 The Team
-Built by Yarah Al-Hindi, Malek Alsaudi, Sahar Abdulhay, and Tasneem Al-Dweiri.
+---
 
-University of Jordan | Deep Learning Project
+## 🧠 The Engineering Breakthrough
+Our research focused on testing different **Attention Mechanisms** and their impact on **heavy vs. lightweight architectures**.
+
+### 🏋️ Heavyweight Test (Server Models)
+- **Architecture:** DenseNet121  
+- **Attention:** CBAM (Convolutional Block Attention Module)  
+- ✅ Result: **99.15% accuracy**
+- 📌 CBAM worked perfectly with large-capacity networks.
+
+### ⚡ Lightweight Test (Edge Models)
+- **Architecture:** EfficientNet-B0  
+- ❌ Applying CBAM caused a **performance drop**
+- 📉 Conclusion: CBAM was too aggressive for small models.
+
+### ✅ The Solution
+- Switched to **Coordinate Attention (CA)** for lightweight models
+- 🎯 Result:
+  - Preserved spatial information
+  - Improved feature focus
+  - Boosted accuracy to **98.03%**
+
+---
+
+## 📊 Performance Benchmark
+
+| Category | Architecture | Attention Strategy | Accuracy | Verdict |
+|--------|-------------|-------------------|----------|--------|
+| Server | DenseNet121 | CBAM | **99.15%** | 🏆 Overall Best Accuracy |
+| Edge | EfficientNet-B0 | Coordinate Attention | **98.03%** | ⚡ Best Efficiency |
+| Edge | MobileNetV2 | Coordinate Attention | High | ✅ Outperformed MobileNetV3 |
+| Edge | MobileNetV3 | Built-in SE | Lower | ❌ Lost to V2 + CA |
+| Edge | EfficientNet-B0 | CBAM | 95.77% | ❌ Performance Drop |
+| Baseline | MobileNetV2 | None | 92.40% | Baseline (Too Low) |
+
+🔑 **Key Finding:**  
+By manually integrating **Coordinate Attention** into the older **MobileNetV2**, we achieved **higher accuracy than MobileNetV3**, proving that **custom attention strategies can outperform newer pre-optimized architectures**.
+
+---
+
+## 📁 Project Structure
+📦 Edge-AI-Campus-Scene-Recognition ┣ 📘 01_Server_Track_DenseNet_CBAM.ipynb ┣ 📕 02_Edge_Track_EfficientNet_CBAM_Fail.ipynb ┣ 📗 03_Edge_Track_EfficientNet_CoordAtt_Success.ipynb ┣ 📙 04_Lightweight_Benchmarking_MobileNet.ipynb ┣ 📄 Research_Paper.pdf ┗ 📊 Project_Presentation.pdf
+
+- **01:** Best-performing heavy model
+- **02:** Failed CBAM experiment on edge
+- **03:** Successful Coordinate Attention optimization
+- **04:** MobileNet V2/V3 benchmarking
+- **Research Paper:** Full methodology & math
+- **Presentation:** Visual project summary
+
+---
+
+## 👥 The Team
+Built by:
+- **Yarah Al-Hindi**
+- **Malek Alsaudi**
+- **Sahar Abdulhay**
+- **Tasneem Al-Dweiri**
+
+---
+
+**University of Jordan**  
+*Deep Learning Course Project*
