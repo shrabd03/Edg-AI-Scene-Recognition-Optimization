@@ -72,7 +72,13 @@ By manually integrating **Coordinate Attention** into the older **MobileNetV2**,
 ---
 
 ## 📁 Project Structure
-📦 Edge-AI-Campus-Scene-Recognition ┣ 📘 01_Server_Track_DenseNet_CBAM.ipynb ┣ 📕 02_Edge_Track_EfficientNet_CBAM_Fail.ipynb ┣ 📗 03_Edge_Track_EfficientNet_CoordAtt_Success.ipynb ┣ 📙 04_Lightweight_Benchmarking_MobileNet.ipynb ┣ 📄 Research_Paper.pdf ┗ 📊 Project_Presentation.pdf
+📦 Edge-AI-Campus-Scene-Recognition 
+┣ 📘 01_Server_Track_DenseNet_CBAM.ipynb 
+┣ 📕 02_Edge_Track_EfficientNet_CBAM_Fail.ipynb
+┣ 📗 03_Edge_Track_EfficientNet_CoordAtt_Success.ipynb 
+┣ 📙 04_Lightweight_Benchmarking_MobileNet.ipynb 
+┣ 📄 Research_Paper.pdf
+┗ 📊 Project_Presentation.pdf
 
 - **01:** Best-performing heavy model
 - **02:** Failed CBAM experiment on edge
@@ -85,9 +91,9 @@ By manually integrating **Coordinate Attention** into the older **MobileNetV2**,
 
 ## 👥 The Team
 Built by:
-- **Yarah Al-Hindi**
-- **Malek Alsaudi**
 - **Sahar Abdulhay**
+- **Yarah AL-Hindi**
+- **Malek Alsaudi**
 - **Tasneem Al-Dweiri**
 
 ---
